@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ML API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url("static/devpost.jpg"); /* Replace with the actual relative path */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 2px solid #333;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .login {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center input fields horizontally */
+            justify-content: center; /* Center input fields vertically */
+        }
+
+        .login input {
+            width: 40%;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        .login button {
+            width: 40%;
+            padding: 10px;
+            background-color: #0074d9;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        #display {
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Credit Card Fraud Prediction</h1>
+        <form action="{{ url_for('getprediction') }}" method="post" class="login">
+            <input type="text" name="amt" placeholder="Amount" required="required"/>
+            <input type="text" name="gender" placeholder="Gender" required="required"/>
+            <input type="text" name="city_pop" placeholder="City Population" required="required"/>
+            <input type="text" name="age" placeholder="Age" required="required"/>
+            <button type="submit">Predict</button>
+        </form>
+        <div>
+            <p id="display">{{ output }}</p>
+        </div>
+    </div>
+</body>
+</html>
